@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>twenty2020 - Eye Health Timer</title>
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body>
+    <header>
+        <h1>twenty2020</h1>
+        <p>An in-browser wellness tool to help you follow the 20/20/20 rule: every 20 minutes, look 20 feet away for 20
+            seconds.</p>
+    </header>
+
+    <main>
+        <section id="timer-section">
+            <div id="timer-display">20:00</div>
+            <button id="start-btn">Start</button>
+            <div>
+                <label>
+                    <input type="checkbox" id="auto-toggle" />
+                    Auto-switch mode
+                </label>
+                <label>
+                    <input type="checkbox" id="sound-toggle" checked />
+                    Sound on
+                </label>
+                <label>
+                    Break duration (seconds):
+                    <input type="number" id="break-time" value="20" min="10" max="120" />
+                </label>
+            </div>
+        </section>
+
+        <section id="widgets">
+            <div id="quote-box"></div>
+            <div id="tip-box"></div>
+        </section>
+    </main>
+
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
