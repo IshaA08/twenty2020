@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>twenty2020 - Eye Health Timer</title>
+    <title>twenty2020 - Timer for Eye Health</title>
     <link rel="stylesheet" href="styles/main.css" />
 </head>
 
 <body>
     <header>
-        <h1>twenty2020</h1>
-        <p>An in-browser wellness tool to help you follow the 20/20/20 rule: every 20 minutes, look 20 feet away for 20
-            seconds.</p>
+        <h1>Twenty-20-20</h1>
+        <p>Prolonged use of screens can lead to significant damage to the user's eyes when done for long periods of time
+            (source). Twenty2020 is an in-browser wellness tool made to help you follow the 20/20/20 rule when online:
+            every 20 minutes, look away from the screen at something 20 feet away for at least 20 seconds.
+            Timer settings can be adjusted using the options below.</p>
     </header>
 
     <main>
+        <!-- Timer Elements -->
         <section id="timer-section">
             <div id="timer-display">20:00</div>
             <button id="start-btn">Start</button>
             <div>
                 <label>
                     <input type="checkbox" id="auto-toggle" />
-                    Auto-switch mode
+                    Automatically restart the timer once break is done
                 </label>
                 <label>
                     <input type="checkbox" id="sound-toggle" checked />
@@ -35,12 +38,14 @@
             </div>
         </section>
 
+        <!-- Widget Elements -->
         <section id="widgets">
             <div id="quote-box"></div>
             <div id="tip-box"></div>
         </section>
     </main>
 
+    <!-- Invoke JS script once DOM elements are loaded -->
     <script src="scripts/app.js"></script>
 </body>
 
