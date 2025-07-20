@@ -12,6 +12,7 @@ const breakInput = document.getElementById("break-time");
 
 let timer; // timer ID for the interval used for clearing or restarting
 let isBreak = false; // flag that checks whether the timer is in break or work mode
+let isRunning = false; // flag used to toggle timer button from "Start" to "Pause"
 let timeLeft = 20 * 60; // the remaining time in each interval
 
 // Use Web Audio API to create Audio object that can be played
@@ -57,7 +58,7 @@ function switchMode() {
 
 // Start a repeating timer that runs every 1000ms/1s
 function startTimer() {
-    clearInterval(timer);
+    //clearInterval(timer);
     timer = setInterval(() => {
         if (timeLeft > 0) {
             timeLeft--;
@@ -79,8 +80,22 @@ startBtn.addEventListener("click", () => {
     if (Notification.permission !== "granted") {
         Notification.requestPermission();
     }
-    updateTimerDisplay();
-    startTimer();
+
+    if (isRunning) {
+        // Pause the timer
+        clearInterval(timer);
+        isRunning = false;
+        startBtn.textContent = "Resume";
+    } else {
+        // Start the timer
+        updateTimerDisplay();
+        startTimer();
+        isRunning = true;
+        startBtn.textContent = "Pause";
+    }
+
+    //updateTimerDisplay();
+    //startTimer();
 });
 
 // Use Fetch API to load JSON data asynchronously to load widgets
@@ -98,5 +113,4 @@ fetch("data/tips.json")
         document.getElementById("tip-box").textContent = tip;
     });
 
-// Two calls that initialize timer display and tab title whent the page loads
 updateTimerDisplay();
