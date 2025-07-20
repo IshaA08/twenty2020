@@ -6,9 +6,11 @@
 // be used later to update UI or react to user actions
 const timerDisplay = document.getElementById("timer-display");
 const startBtn = document.getElementById("start-btn");
+const resetBtn = document.getElementById("reset-btn");
 const soundToggle = document.getElementById("sound-toggle");
 const autoToggle = document.getElementById("auto-toggle");
 const breakInput = document.getElementById("break-time");
+const DEFAULT_WORK_TIME = 20 * 60; // default for the timer is 20 minutes
 
 let timer; // timer ID for the interval used for clearing or restarting
 let isBreak = false; // flag that checks whether the timer is in break or work mode
@@ -96,6 +98,21 @@ startBtn.addEventListener("click", () => {
 
     //updateTimerDisplay();
     //startTimer();
+});
+
+resetBtn.addEventListener("click", () => {
+    clearInterval(timer); // Stop the timer if running
+    timer = null;
+    isRunning = false;
+    isBreak = false;
+    breakInput.value = "20";
+
+    timeLeft = DEFAULT_WORK_TIME;
+
+    updateTimerDisplay();
+    updateTabTitle();
+
+    startBtn.textContent = "Start";
 });
 
 // Use Fetch API to load JSON data asynchronously to load widgets
