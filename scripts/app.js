@@ -100,4 +100,3 @@ fetch("data/tips.json")
 
 // Two calls that initialize timer display and tab title whent the page loads
 updateTimerDisplay();
-updateTabTitle();
