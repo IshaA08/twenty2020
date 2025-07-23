@@ -10,6 +10,8 @@ const resetBtn = document.getElementById("reset-btn");
 const soundToggle = document.getElementById("sound-toggle");
 const autoToggle = document.getElementById("auto-toggle");
 const breakInput = document.getElementById("break-time");
+const widgetQuote = document.getElementById("quote");
+const widgetTip = document.getElementById("tip");
 const DEFAULT_WORK_TIME = 20 * 60; // default for the timer is 20 minutes
 
 let timer; // timer ID for the interval used for clearing or restarting
@@ -117,17 +119,19 @@ resetBtn.addEventListener("click", () => {
 
 // Use Fetch API to load JSON data asynchronously to load widgets
 fetch("data/quotes.json")
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
+        // Pick a random quote to display in the widget
         const quote = data[Math.floor(Math.random() * data.length)];
-        document.getElementById("quote-box").textContent = quote;
+        widgetQuote.textContent = quote;
     });
 
 fetch("data/tips.json")
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
+        // Pick a random tip to display in the widget
         const tip = data[Math.floor(Math.random() * data.length)];
-        document.getElementById("tip-box").textContent = tip;
+        widgetTip.textContent = tip;
     });
 
 updateTimerDisplay();
