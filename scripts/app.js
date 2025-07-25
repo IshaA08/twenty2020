@@ -14,20 +14,33 @@ const widgetQuote = document.getElementById("quote");
 const widgetTip = document.getElementById("tip");
 const DEFAULT_WORK_TIME = 20 * 60; // default for the timer is 20 minutes
 
-// Mapping chime sounds to values
+// Map chime sounds to values
 const chimeSounds = {
     "soft-bell": new Audio("sounds/soft-bell.mp3"),
     "gentle-ping": new Audio("sounds/gentle-ping.mp3"),
     "classic-beep": new Audio("sounds/classic-beep.mp3"),
 };
 
-// Set the current chime to default
-let currentChime = document.querySelector('input[name="chime"]:checked').value;
+// Map ambient sounds to values
+const ambientSounds = {
+    "rain": new Audio("sounds/rain.mp3"),
+    "fireplace": new Audio("sounds/fireplace.mp3"),
+    "gentle-fan": new Audio("sounds/gentle-fan.mp3"),
+};
+
+// Enable looping for each ambient track
+Object.values(ambientSounds).forEach(audio => {
+    audio.loop = true;
+});
 
 let timer; // timer ID for the interval used for clearing or restarting
 let isBreak = false; // flag that checks whether the timer is in break or work mode
 let isRunning = false; // flag used to toggle timer button from "Start" to "Pause"
 let timeLeft = 20 * 60; // the remaining time in each interval
+
+// Sound defaults
+let currentChime = document.querySelector('input[name="chime"]:checked').value;
+let currentAmbient = null;
 
 // REMOVE beep - Use Web Audio API to create Audio object that can be played
 const beep = new Audio("assets/beep.mp3");
@@ -89,6 +102,15 @@ function startTimer() {
     }, 1000);
 }
 
+// Used to stop playing ambient tracks
+function stopAmbientSound() {
+    if (currentAmbient) {
+        currentAmbient.pause();
+        currentAmbient.currentTime = 0;
+        currentAmbient = null;
+    }
+}
+
 // Event listener for Start button that requests notification permission, updates timer display and starts timer
 startBtn.addEventListener("click", () => {
     if (Notification.permission !== "granted") {
@@ -132,6 +154,25 @@ document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
         currentChime = input.value;
         console.log("Current chime is: " + currentChime);
+    });
+});
+
+// Change or play ambient tracks depending on user selection events
+document.querySelectorAll('input[name="ambient"]').forEach(input => {
+    input.addEventListener("change", () => {
+        const selected = input.value;
+
+        // Stop the current sound
+        stopAmbientSound();
+
+        // Play the new one (unless it's "none")
+        if (selected !== "none") {
+            currentAmbient = ambientSounds[selected];
+            if (currentAmbient) {
+                //currentAmbient.play();
+            }
+        }
+        //console.log("Current ambient track: " + selected);
     });
 });
 
