@@ -14,12 +14,22 @@ const widgetQuote = document.getElementById("quote");
 const widgetTip = document.getElementById("tip");
 const DEFAULT_WORK_TIME = 20 * 60; // default for the timer is 20 minutes
 
+// Mapping chime sounds to values
+const chimeSounds = {
+    "soft-bell": new Audio("sounds/soft-bell.mp3"),
+    "gentle-ping": new Audio("sounds/gentle-ping.mp3"),
+    "classic-beep": new Audio("sounds/classic-beep.mp3"),
+};
+
+// Set the current chime to default
+let currentChime = document.querySelector('input[name="chime"]:checked').value;
+
 let timer; // timer ID for the interval used for clearing or restarting
 let isBreak = false; // flag that checks whether the timer is in break or work mode
 let isRunning = false; // flag used to toggle timer button from "Start" to "Pause"
 let timeLeft = 20 * 60; // the remaining time in each interval
 
-// Use Web Audio API to create Audio object that can be played
+// REMOVE beep - Use Web Audio API to create Audio object that can be played
 const beep = new Audio("assets/beep.mp3");
 
 // Update the browser tab's title to show the timer countdown or break status
@@ -115,6 +125,14 @@ resetBtn.addEventListener("click", () => {
     updateTabTitle();
 
     startBtn.textContent = "Start";
+});
+
+// Change the chime setting depending on what the user selects
+document.querySelectorAll('input[name="chime"]').forEach(input => {
+    input.addEventListener("change", () => {
+        currentChime = input.value;
+        console.log("Current chime is: " + currentChime);
+    });
 });
 
 // Use Fetch API to load JSON data asynchronously to load widgets
