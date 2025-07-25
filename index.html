@@ -58,27 +58,100 @@
         <!-- Settings Section -->
         <section id="settings-section">
             <div id="sound-settings">
-                <div id="chime-sound-options"></div>
-                <div id="ambient-sound-options">
-                    <div id="rain-sound"></div>
-                    <div id="rain-with-thunder-sound"></div>
-                    <div id="fireplace-sound"></div>
-                    <div id="gentle-fan-sound"></div>
-                </div>
-                <div id="background-music-options">
-                    <div id="halal-beats-bgm"></div>
-                    <div id="lofi-nasheeds-bgm"></div>
-                    <div id="generic-gentle-bgm"></div>
-                </div>
+                <!-- Chime Sound Options -->
+                <fieldset id="chime-sound-options">
+                    <legend>Chime Sound</legend>
+                    <label>
+                        <input type="radio" name="chime" value="soft-bell" checked />
+                        Soft Bell
+                    </label><br />
+                    <label>
+                        <input type="radio" name="chime" value="gentle-ping" />
+                        Gentle Ping
+                    </label><br />
+                    <label>
+                        <input type="radio" name="chime" value="classic-beep" />
+                        Classic Beep
+                    </label>
+                </fieldset>
+                <!-- Ambient Sound Options-->
+                <fieldset id="ambient-sound-options">
+                    <legend>Ambient Sound</legend>
+                    <label>
+                        <input type="radio" name="ambient" value="rain" />
+                        Gentle Rain
+                    </label><br />
+                    <label>
+                        <input type="radio" name="ambient" value="rain-thunder" />
+                        Rain and Thunder
+                    </label><br />
+                    <label>
+                        <input type="radio" name="ambient" value="fireplace" />
+                        Fireplace
+                    </label><br />
+                    <label>
+                        <input type="radio" name="ambient" value="none" checked />
+                        None
+                    </label>
+                </fieldset>
+                <!-- Background Tunes Options -->
+                <fieldset id="background-tunes-options">
+                    <legend>BGM</legend>
+                    <label>
+                        <input type="radio" name="bgm" value="halal-beats" />
+                        Halal Beats
+                    </label><br />
+                    <label>
+                        <input type="radio" name="bgm" value="lofi-nasheeds" />
+                        Lofi Nasheed
+                    </label><br />
+                    <label>
+                        <input type="radio" name="bgm" value="generic-gentle" />
+                        Generic Gentle
+                    </label><br />
+                    <label>
+                        <input type="radio" name="bgm" value="none" checked />
+                        None
+                    </label>
+                </fieldset>
             </div>
             <div id="visual-settings">
-                <div id="light-dark-mode"></div>
-                <div id="theme-presets">
-                    <div id="pink-bubblegum-theme"></div>
-                    <div id="forest-nature-theme"></div>
-                    <div id="watery-ocean-theme"></div>
-                    <div id="dark-city-night-theme"></div>
-                </div>
+                <!-- Light/Dark Mode -->
+                <fieldset id="light-dark-mode">
+                    <legend>Appearance</legend>
+                    <label>
+                        <input type="radio" name="light-dark" value="light" />
+                        Light
+                    </label><br />
+                    <label>
+                        <input type="radio" name="light-dark" value="dark" checked />
+                        Dark
+                    </label>
+                </fieldset>
+                <!-- Preset Themes -->
+                <fieldset id="preset-themes">
+                    <legend>Themes</legend>
+                    <label>
+                        <input type="radio" name="themes" value="pastel-pink" />
+                        Bubblegum Pink
+                    </label><br />
+                    <label>
+                        <input type="radio" name="themes" value="forest-green" />
+                        Forest Green
+                    </label><br />
+                    <label>
+                        <input type="radio" name="themes" value="ocean-blue" />
+                        Ocean Blue
+                    </label><br />
+                    <label>
+                        <input type="radio" name="themes" value="sunny-yellow" />
+                        Sunshine Yellow
+                    </label><br />
+                    <label>
+                        <input type="radio" name="themes" value="none" checked />
+                        None
+                    </label>
+                </fieldset>
             </div>
         </section>
 
