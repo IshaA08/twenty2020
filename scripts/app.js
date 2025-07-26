@@ -28,8 +28,20 @@ const ambientSounds = {
     "gentle-fan": new Audio("sounds/gentle-fan.mp3"),
 };
 
+// Map bgm sounds to values
+const bgmSounds = {
+    "halal-beats": new Audio("sounds/hb.mp3"),
+    "lofi-nasheed": new Audio("sounds/ln.mp3"),
+    "generic-gentle": new Audio("sounds/gg.mp3")
+};
+
 // Enable looping for each ambient track
 Object.values(ambientSounds).forEach(audio => {
+    audio.loop = true;
+});
+
+// Enable looping for each bgm track
+Object.values(bgmSounds).forEach(audio => {
     audio.loop = true;
 });
 
@@ -41,8 +53,9 @@ let timeLeft = 20 * 60; // the remaining time in each interval
 // Sound defaults
 let currentChime = document.querySelector('input[name="chime"]:checked').value;
 let currentAmbient = null;
+let currentBgm = null;
 
-// REMOVE beep - Use Web Audio API to create Audio object that can be played
+// REMOVE THIS LATER beep - Use Web Audio API to create Audio object that can be played
 const beep = new Audio("assets/beep.mp3");
 
 // Update the browser tab's title to show the timer countdown or break status
@@ -111,6 +124,15 @@ function stopAmbientSound() {
     }
 }
 
+// Used to stop playing bgm tracks
+function stopBgmSound() {
+    if (currentBgm) {
+        currentBgm.pause();
+        currentBgm.currentTime = 0;
+        currentBgm = null;
+    }
+}
+
 // Event listener for Start button that requests notification permission, updates timer display and starts timer
 startBtn.addEventListener("click", () => {
     if (Notification.permission !== "granted") {
@@ -153,7 +175,7 @@ resetBtn.addEventListener("click", () => {
 document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
         currentChime = input.value;
-        console.log("Current chime is: " + currentChime);
+        //console.log("Current chime is: " + currentChime);
     });
 });
 
@@ -173,6 +195,25 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
             }
         }
         //console.log("Current ambient track: " + selected);
+    });
+});
+
+// Change or play bgm tracks depending on user selection events
+document.querySelectorAll('input[name="bgm"]').forEach(input => {
+    input.addEventListener("change", () => {
+        const selected = input.value;
+
+        // Stop the current sound
+        stopBgmSound();
+
+        // Play the new one (unless it's "none")
+        if (selected !== "none") {
+            currentBgm = bgmSounds[selected];
+            if (currentBgm) {
+                //currentBgm.play();
+            }
+        }
+        //console.log("Current bgm track: " + selected);
     });
 });
 
