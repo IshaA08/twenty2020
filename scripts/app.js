@@ -218,12 +218,22 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
 });
 
 // Change appearance based on user input
-document.querySelectorAll('input[name="light-dark"]').forEach(input => {
+document.querySelectorAll('input[name="theme"]').forEach(input => {
     input.addEventListener("change", () => {
-        document.body.classList.remove("light-mode", "dark-mode");
-        document.body.classList.add(`${input.value}-mode`);
+        // Remove any current theme classes
+        document.body.classList.remove("light-mode", "dark-mode", "bubblegum-theme", "forest-theme", "ocean-theme", "sunny-theme");
+
+        // Add the new theme class
+        const selectedTheme = input.value;
+
+        if (selectedTheme === "light" || selectedTheme === "dark") {
+            document.body.classList.add(`${selectedTheme}-mode`);
+        } else {
+            document.body.classList.add(`${selectedTheme}-theme`);
+        }
     });
 });
+
 
 
 // Use Fetch API to load JSON data asynchronously to load widgets

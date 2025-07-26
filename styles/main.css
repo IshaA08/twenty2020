@@ -6,6 +6,7 @@
 body {
     background-color: var(--bg);
     color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode {
@@ -16,4 +17,24 @@ body.dark-mode {
 body.light-mode {
     --bg: #ffffff;
     --text: #000000;
+}
+
+body.bubblegum-theme {
+    --bg: #ffe3f0;
+    --text: #6e2f4c;
+}
+
+body.forest-theme {
+    --bg: #e6f4ea;
+    --text: #264d38;
+}
+
+body.ocean-theme {
+    --bg: #e0f7fa;
+    --text: #004d66;
+}
+
+body.sunny-theme {
+    --bg: #d8ba58;
+    --text: #25241d;
 }
