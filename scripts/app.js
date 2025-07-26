@@ -217,6 +217,15 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
     });
 });
 
+// Change appearance based on user input
+document.querySelectorAll('input[name="light-dark"]').forEach(input => {
+    input.addEventListener("change", () => {
+        document.body.classList.remove("light-mode", "dark-mode");
+        document.body.classList.add(`${input.value}-mode`);
+    });
+});
+
+
 // Use Fetch API to load JSON data asynchronously to load widgets
 fetch("data/quotes.json")
     .then(response => response.json())
