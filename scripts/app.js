@@ -56,7 +56,7 @@ let currentAmbient = null;
 let currentBgm = null;
 
 // REMOVE THIS LATER beep - Use Web Audio API to create Audio object that can be played
-const beep = new Audio("assets/beep.mp3");
+// const beep = new Audio("assets/beep.mp3");
 
 // Update the browser tab's title to show the timer countdown or break status
 function updateTabTitle() {
@@ -81,7 +81,12 @@ function notify(msg) {
     if (Notification.permission === "granted") {
         new Notification(msg);
     }
-    if (soundToggle.checked) beep.play();
+    if (currentChime && currentChime !== "none") {
+        const chimeAudio = chimeSounds[currentChime];
+        if (chimeAudio) {
+            chimeAudio.play();
+        }
+    }
 }
 
 // Toggle between break and work mode. Break time is read from user input given in form field
@@ -233,8 +238,6 @@ document.querySelectorAll('input[name="theme"]').forEach(input => {
         }
     });
 });
-
-
 
 // Use Fetch API to load JSON data asynchronously to load widgets
 fetch("data/quotes.json")

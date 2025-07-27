@@ -45,10 +45,6 @@
                     Automatically restart the timer once break is done
                 </label>
                 <label>
-                    <input type="checkbox" id="sound-toggle" checked />
-                    Sound on
-                </label>
-                <label>
                     Break duration (seconds):
                     <input type="number" id="break-time" value="20" min="10" max="120" />
                 </label>
@@ -62,7 +58,7 @@
                 <fieldset id="chime-sound-options">
                     <legend>Chime Sound</legend>
                     <label>
-                        <input type="radio" name="chime" value="soft-bell" checked />
+                        <input type="radio" name="chime" value="soft-bell" />
                         Soft Bell
                     </label><br />
                     <label>
@@ -72,6 +68,10 @@
                     <label>
                         <input type="radio" name="chime" value="classic-beep" />
                         Classic Beep
+                    </label><br />
+                    <label>
+                        <input type="radio" name="chime" value="none" checked />
+                        None
                     </label>
                 </fieldset>
                 <!-- Ambient Sound Options-->
