@@ -55,6 +55,16 @@ let currentChime = document.querySelector('input[name="chime"]:checked').value;
 let currentAmbient = null;
 let currentBgm = null;
 
+// Sound/Volume controls
+const chimeVolumeSlider = document.getElementById("chime-volume");
+const ambientVolumeSlider = document.getElementById("ambient-volume");
+const bgmVolumeSlider = document.getElementById("bgm-volume");
+
+// Set initial volume on all sounds
+Object.values(chimeSounds).forEach(audio => audio.volume = parseFloat(chimeVolumeSlider.value));
+Object.values(ambientSounds).forEach(audio => audio.volume = parseFloat(ambientVolumeSlider.value));
+Object.values(bgmSounds).forEach(audio => audio.volume = parseFloat(bgmVolumeSlider.value));
+
 // REMOVE THIS LATER beep - Use Web Audio API to create Audio object that can be played
 // const beep = new Audio("assets/beep.mp3");
 
@@ -220,6 +230,27 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
         }
         //console.log("Current bgm track: " + selected);
     });
+});
+
+// Update chime volume on slider input
+chimeVolumeSlider.addEventListener("input", () => {
+    const newVolume = parseFloat(chimeVolumeSlider.value);
+    Object.values(chimeSounds).forEach(audio => audio.volume = newVolume);
+    //console.log("Chime volume: " + newVolume);
+});
+
+// Update ambient sound volume on slider input
+ambientVolumeSlider.addEventListener("input", () => {
+    const newVolume = parseFloat(ambientVolumeSlider.value);
+    Object.values(ambientSounds).forEach(audio => audio.volume = newVolume);
+    // console.log("Ambient volume: " + newVolume);
+});
+
+// Update BGM volume on slider input
+bgmVolumeSlider.addEventListener("input", () => {
+    const newVolume = parseFloat(bgmVolumeSlider.value);
+    Object.values(bgmSounds).forEach(audio => audio.volume = newVolume);
+    // console.log("bgm volume: " + newVolume);
 });
 
 // Change appearance based on user input
