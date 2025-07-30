@@ -60,6 +60,17 @@ const chimeVolumeSlider = document.getElementById("chime-volume");
 const ambientVolumeSlider = document.getElementById("ambient-volume");
 const bgmVolumeSlider = document.getElementById("bgm-volume");
 
+// Progress bar controls
+const progressBar = document.getElementById('current-progress');
+
+function updateProgressBar() {
+    let totalDuration = isBreak ? parseInt(breakInput.value, 10) : DEFAULT_WORK_TIME;
+    let elapsed = totalDuration - timeLeft;
+    let percent = (elapsed / totalDuration) * 100;
+    progressBar.style.width = `${percent}%`;
+}
+
+
 // Set initial volume on all sounds
 Object.values(chimeSounds).forEach(audio => audio.volume = parseFloat(chimeVolumeSlider.value));
 Object.values(ambientSounds).forEach(audio => audio.volume = parseFloat(ambientVolumeSlider.value));
@@ -118,10 +129,12 @@ function startTimer() {
         if (timeLeft > 0) {
             timeLeft--;
             updateTimerDisplay();
+            updateProgressBar();
             updateTabTitle();
         } else {
             switchMode();
             updateTimerDisplay();
+            updateProgressBar();
             updateTabTitle();
             if (!autoToggle.checked) {
                 clearInterval(timer);
@@ -181,6 +194,7 @@ resetBtn.addEventListener("click", () => {
     timeLeft = DEFAULT_WORK_TIME;
 
     updateTimerDisplay();
+    updateProgressBar();
     updateTabTitle();
 
     startBtn.textContent = "Start";
@@ -288,3 +302,4 @@ fetch("data/tips.json")
     });
 
 updateTimerDisplay();
+updateProgressBar();
