@@ -34,148 +34,153 @@
     </header>
 
     <main>
-        <!-- Timer Elements -->
-        <section id="timer-section">
-            <div id="timer-display">20:00</div>
-            <div id="progress-bar">
-                <div id="current-progress"></div>
-            </div>
-            <button id="start-btn">Start</button>
-            <button id="reset-btn">Reset</button>
-            <div>
-                <label>
-                    <input type="checkbox" id="auto-toggle" />
-                    Automatically restart the timer once break is done
-                </label>
-                <label>
-                    Break duration (seconds):
-                    <input type="number" id="break-time" value="20" min="10" max="120" />
-                </label>
-            </div>
-        </section>
 
-        <!-- Settings Section -->
-        <section id="settings-section">
-            <div id="sound-settings">
-                <!-- Chime Sound Options -->
-                <fieldset id="chime-sound-options">
-                    <legend>Chime Sound</legend>
-                    <label>
-                        <input type="radio" name="chime" value="soft-bell" />
-                        Soft Bell
-                    </label><br />
-                    <label>
-                        <input type="radio" name="chime" value="gentle-ping" />
-                        Gentle Ping
-                    </label><br />
-                    <label>
-                        <input type="radio" name="chime" value="classic-beep" />
-                        Classic Beep
-                    </label><br />
-                    <label>
-                        <input type="radio" name="chime" value="none" checked />
-                        None
-                    </label><br />
-                    <label>
-                        Volume:
-                        <input type="range" id="chime-volume" min="0" max="1" step="0.01" value="1" />
-                    </label>
-                </fieldset>
-                <!-- Ambient Sound Options-->
-                <fieldset id="ambient-sound-options">
-                    <legend>Ambient Sound</legend>
-                    <label>
-                        <input type="radio" name="ambient" value="rain" />
-                        Gentle Rain
-                    </label><br />
-                    <label>
-                        <input type="radio" name="ambient" value="rain-thunder" />
-                        Rain and Thunder
-                    </label><br />
-                    <label>
-                        <input type="radio" name="ambient" value="fireplace" />
-                        Fireplace
-                    </label><br />
-                    <label>
-                        <input type="radio" name="ambient" value="none" checked />
-                        None
-                    </label><br />
-                    <label>
-                        Volume:
-                        <input type="range" id="ambient-volume" min="0" max="1" step="0.01" value="1" />
-                    </label>
-                </fieldset>
-                <!-- Background Tunes Options -->
-                <fieldset id="background-tunes-options">
-                    <legend>BGM</legend>
-                    <label>
-                        <input type="radio" name="bgm" value="halal-beats" />
-                        Halal Beats
-                    </label><br />
-                    <label>
-                        <input type="radio" name="bgm" value="lofi-nasheeds" />
-                        Lofi Nasheed
-                    </label><br />
-                    <label>
-                        <input type="radio" name="bgm" value="generic-gentle" />
-                        Generic Gentle
-                    </label><br />
-                    <label>
-                        <input type="radio" name="bgm" value="none" checked />
-                        None
-                    </label><br />
-                    <label>
-                        Volume:
-                        <input type="range" id="bgm-volume" min="0" max="1" step="0.01" value="1" />
-                    </label>
-                </fieldset>
-            </div>
-            <div id="visual-settings">
-                <!-- Light/Dark Mode -->
-                <fieldset id="light-dark-mode">
-                    <legend>Appearance</legend>
-                    <label>
-                        <input type="radio" name="theme" value="light" checked />
-                        Light
-                    </label><br />
-                    <label>
-                        <input type="radio" name="theme" value="dark" />
-                        Dark
-                    </label>
-                </fieldset>
-                <!-- Preset Themes -->
-                <fieldset id="preset-themes">
-                    <legend>Themes</legend>
-                    <label>
-                        <input type="radio" name="theme" value="bubblegum" />
-                        Bubblegum Pink
-                    </label><br />
-                    <label>
-                        <input type="radio" name="theme" value="forest" />
-                        Forest Green
-                    </label><br />
-                    <label>
-                        <input type="radio" name="theme" value="ocean" />
-                        Ocean Blue
-                    </label><br />
-                    <label>
-                        <input type="radio" name="theme" value="sunny" />
-                        Sunshine Yellow
-                    </label>
-                </fieldset>
-            </div>
-        </section>
+        <!-- Three Columns Layout -->
+        <section id="main-columns">
 
-        <!-- Widget Elements -->
-        <section id="widgets">
-            <div id="quote-box">
-                <h3>Quote of the Day</h3>
-                <p id="quote"></p>
-            </div>
-            <div id="tip-box">
-                <h3>Eye Health Tip</h3>
-                <p id="tip"></p>
-            </div>
+            <!-- Settings Section -->
+            <section id="settings-section">
+                <div id="sound-settings">
+                    <!-- Chime Sound Options -->
+                    <fieldset id="chime-sound-options">
+                        <legend>Chime Sound</legend>
+                        <label>
+                            <input type="radio" name="chime" value="soft-bell" />
+                            Soft Bell
+                        </label><br />
+                        <label>
+                            <input type="radio" name="chime" value="gentle-ping" />
+                            Gentle Ping
+                        </label><br />
+                        <label>
+                            <input type="radio" name="chime" value="classic-beep" />
+                            Classic Beep
+                        </label><br />
+                        <label>
+                            <input type="radio" name="chime" value="none" checked />
+                            None
+                        </label><br />
+                        <label>
+                            Volume:
+                            <input type="range" id="chime-volume" min="0" max="1" step="0.01" value="1" />
+                        </label>
+                    </fieldset>
+                    <!-- Ambient Sound Options-->
+                    <fieldset id="ambient-sound-options">
+                        <legend>Ambient Sound</legend>
+                        <label>
+                            <input type="radio" name="ambient" value="rain" />
+                            Gentle Rain
+                        </label><br />
+                        <label>
+                            <input type="radio" name="ambient" value="rain-thunder" />
+                            Rain and Thunder
+                        </label><br />
+                        <label>
+                            <input type="radio" name="ambient" value="fireplace" />
+                            Fireplace
+                        </label><br />
+                        <label>
+                            <input type="radio" name="ambient" value="none" checked />
+                            None
+                        </label><br />
+                        <label>
+                            Volume:
+                            <input type="range" id="ambient-volume" min="0" max="1" step="0.01" value="1" />
+                        </label>
+                    </fieldset>
+                    <!-- Background Tunes Options -->
+                    <fieldset id="background-tunes-options">
+                        <legend>BGM</legend>
+                        <label>
+                            <input type="radio" name="bgm" value="halal-beats" />
+                            Halal Beats
+                        </label><br />
+                        <label>
+                            <input type="radio" name="bgm" value="lofi-nasheeds" />
+                            Lofi Nasheed
+                        </label><br />
+                        <label>
+                            <input type="radio" name="bgm" value="generic-gentle" />
+                            Generic Gentle
+                        </label><br />
+                        <label>
+                            <input type="radio" name="bgm" value="none" checked />
+                            None
+                        </label><br />
+                        <label>
+                            Volume:
+                            <input type="range" id="bgm-volume" min="0" max="1" step="0.01" value="1" />
+                        </label>
+                    </fieldset>
+                </div>
+                <div id="visual-settings">
+                    <!-- Light/Dark Mode -->
+                    <fieldset id="light-dark-mode">
+                        <legend>Appearance</legend>
+                        <label>
+                            <input type="radio" name="theme" value="light" checked />
+                            Light
+                        </label><br />
+                        <label>
+                            <input type="radio" name="theme" value="dark" />
+                            Dark
+                        </label>
+                    </fieldset>
+                    <!-- Preset Themes -->
+                    <fieldset id="preset-themes">
+                        <legend>Themes</legend>
+                        <label>
+                            <input type="radio" name="theme" value="bubblegum" />
+                            Bubblegum Pink
+                        </label><br />
+                        <label>
+                            <input type="radio" name="theme" value="forest" />
+                            Forest Green
+                        </label><br />
+                        <label>
+                            <input type="radio" name="theme" value="ocean" />
+                            Ocean Blue
+                        </label><br />
+                        <label>
+                            <input type="radio" name="theme" value="sunny" />
+                            Sunshine Yellow
+                        </label>
+                    </fieldset>
+                </div>
+            </section>
+
+            <!-- Timer Elements -->
+            <section id="timer-section">
+                <div id="timer-display">20:00</div>
+                <div id="progress-bar">
+                    <div id="current-progress"></div>
+                </div>
+                <button id="start-btn">Start</button>
+                <button id="reset-btn">Reset</button>
+                <div>
+                    <label>
+                        <input type="checkbox" id="auto-toggle" />
+                        Automatically restart the timer once break is done
+                    </label>
+                    <label>
+                        Break duration (seconds):
+                        <input type="number" id="break-time" value="20" min="10" max="120" />
+                    </label>
+                </div>
+            </section>
+
+            <!-- Widget Elements -->
+            <section id="widgets">
+                <div id="quote-box">
+                    <h3>Quote of the Day</h3>
+                    <p id="quote"></p>
+                </div>
+                <div id="tip-box">
+                    <h3>Eye Health Tip</h3>
+                    <p id="tip"></p>
+                </div>
+            </section>
         </section>
     </main>
 

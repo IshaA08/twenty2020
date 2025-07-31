@@ -55,3 +55,51 @@ body.sunny-theme {
     --bg: #f5e3a5;
     --text: #6f5f2a;
 }
+
+#main-columns {
+    display: flex;
+    flex-direction: row;
+    /* row = horizontal layout */
+    justify-content: center;
+    /* center the whole layout horizontally */
+    align-items: flex-start;
+    /* align tops of sections */
+    gap: 2rem;
+    /* spacing between columns */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Three columns layout */
+
+#settings-section {
+    flex: 0.5;
+    min-width: 180px;
+}
+
+#timer-section {
+    flex: 3;
+    min-width: 300px;
+    max-width: 600px;
+    text-align: center;
+}
+
+#widgets {
+    flex: 0.5;
+    min-width: 180px;
+}
+
+/* Responsiveness for columns to make it mobile-friendly */
+@media (max-width: 768px) {
+    #main-columns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #settings-section,
+    #timer-section,
+    #widgets {
+        width: 100%;
+    }
+}
