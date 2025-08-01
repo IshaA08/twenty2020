@@ -1,71 +1,261 @@
 :root {
-    --bg: #ffffff;
-    --text: #000000;
+    --bg: #ededed;
+    --text: #1d1d1e;
+    --accent: #40404c;
+    --accent-light: #5f5e63;
+    --border: #cccccc;
+    --btn-bg: var(--accent);
+    --btn-text: #ffffff;
+    --card-bg: #f9f9f9;
+    --card-text: var(--text);
+    --progress-bg: #eee;
+    --progress-fill: var(--accent);
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
-    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#info-section {
+    max-width: 1000px;
+    margin: 1rem auto;
+    text-align: center;
+    color: var(--text);
+    line-height: 1.4;
+    font-size: 1rem;
+}
+
+#info-section h1,
+#info-section h2 {
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+#info-section p {
+    margin-bottom: 1.5rem;
+}
+
+sup a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.8em;
+    vertical-align: super;
+}
+
+sup a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+sup a:visited {
+    color: var(--text);
+}
+
+sup a:focus {
+    outline: 1px dotted var(--accent);
+}
+
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--accent-light);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Webkit thumb (Chrome, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+    margin-top: -5px;
+}
+
+/* Firefox thumb */
+input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: none;
+    cursor: pointer;
+}
+
+input[type="number"] {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    padding: 0.3rem 0.5rem;
+    width: 80px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+button {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
 #progress-bar {
     width: 100%;
     height: 20px;
-    background-color: #eee;
+    background-color: var(--progress-bg);
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #current-progress {
     height: 100%;
     width: 0%;
-    background-color: #4caf50;
-    /* nice green */
+    background-color: var(--progress-fill);
     transition: width 0.5s ease;
 }
 
-body.dark-mode {
-    --bg: #111111;
-    --text: #f0f0f0;
+body.light-mode {
+    --bg: #ededed;
+    --text: #1d1d1e;
+    --accent: #40404c;
+    --accent-light: #5f5e63;
+    --border: #cccccc;
+    --btn-bg: var(--accent);
+    --btn-text: #ffffff;
+    --card-bg: #f9f9f9;
+    --card-text: var(--text);
+    --progress-bg: #eee;
+    --progress-fill: var(--accent);
 }
 
-body.light-mode {
-    --bg: #ffffff;
-    --text: #000000;
+body.dark-mode {
+    --bg: #1e1d1e;
+    --text: #dbdbe5;
+    --accent: #fefefe;
+    --accent-light: #bbbbbb;
+    --progress-bg: #6a6a6a;
+    --progress-fill: var(--accent);
+    --border: #9f9ea3;
+    --card-bg: #1a1a1a;
+    --card-text: var(--text);
+    --btn-bg: var(--progress-bg);
+    --btn-text: var(--text);
 }
 
 body.bubblegum-theme {
     --bg: #ffe3f0;
     --text: #6e2f4c;
+    --accent: #ff83b3;
+    --accent-light: #f1a8c4;
+    --progress-bg: #efb5cb;
+    --progress-fill: var(--accent);
+    --border: #c39cab;
+    --card-bg: #ffc2d7;
+    --card-text: var(--text);
+    --btn-bg: var(--progress-bg);
+    --btn-text: var(--text);
 }
 
 body.forest-theme {
     --bg: #e6f4ea;
     --text: #264d38;
+    --accent: #00cc88;
+    --accent-light: #80baa7;
+    --progress-bg: #addecd;
+    --progress-fill: var(--accent);
+    --border: #86a49a;
+    --card-bg: #d4e9d9;
+    --card-text: var(--text);
+    --btn-bg: var(--progress-bg);
+    --btn-text: var(--text);
 }
 
 body.ocean-theme {
     --bg: #e0f7fa;
     --text: #004d66;
+    --accent: #7aebff;
+    --accent-light: #9dc7ce;
+    --progress-bg: #cde5ea;
+    --progress-fill: var(--accent);
+    --border: #97aaad;
+    --card-bg: #d1e2ed;
+    --card-text: var(--text);
+    --btn-bg: var(--progress-bg);
+    --btn-text: var(--text);
 }
 
 body.sunny-theme {
     --bg: #f5e3a5;
     --text: #6f5f2a;
+    --accent: #fbf778;
+    --accent-light: #959878;
+    --progress-bg: #bcb587;
+    --progress-fill: var(--accent);
+    --border: #bcb587;
+    --card-bg: #f8f2d5;
+    --card-text: var(--text);
+    --btn-bg: var(--border);
+    --btn-text: var(--card-bg);
 }
 
 #main-columns {
     display: flex;
     flex-direction: row;
-    /* row = horizontal layout */
     justify-content: center;
-    /* center the whole layout horizontally */
     align-items: flex-start;
-    /* align tops of sections */
     gap: 2rem;
-    /* spacing between columns */
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -88,6 +278,21 @@ body.sunny-theme {
 #widgets {
     flex: 0.5;
     min-width: 180px;
+}
+
+fieldset {
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--text);
 }
 
 /* Responsiveness for columns to make it mobile-friendly */
