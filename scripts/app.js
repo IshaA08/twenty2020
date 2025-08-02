@@ -16,23 +16,23 @@ const DEFAULT_WORK_TIME = 20 * 60; // default for the timer is 20 minutes
 
 // Map chime sounds to values
 const chimeSounds = {
-    "soft-bell": new Audio("sounds/soft-bell.mp3"),
-    "gentle-ping": new Audio("sounds/gentle-ping.mp3"),
-    "classic-beep": new Audio("sounds/classic-beep.mp3"),
+    "soft-bell": new Audio("assets/bell.mp3"),
+    "gentle-ping": new Audio("assets/chime.mp3"),
+    "classic-beep": new Audio("assets/simple.mp3"),
 };
 
 // Map ambient sounds to values
 const ambientSounds = {
-    "rain": new Audio("sounds/rain.mp3"),
-    "fireplace": new Audio("sounds/fireplace.mp3"),
-    "gentle-fan": new Audio("sounds/gentle-fan.mp3"),
+    "rain": new Audio("assets/rain.mp3"),
+    "rain-thunder": new Audio("assets/rain-and-thunder.mp3"),
+    "fireplace": new Audio("assets/fireplace.mp3")
 };
 
 // Map bgm sounds to values
 const bgmSounds = {
-    "halal-beats": new Audio("sounds/hb.mp3"),
-    "lofi-nasheed": new Audio("sounds/ln.mp3"),
-    "generic-gentle": new Audio("sounds/gg.mp3")
+    "beat-1": new Audio("assets/night-detective.mp3"),
+    "beat-2": new Audio("assets/lofi-beat.mp3"),
+    "beat-3": new Audio("assets/smoke.mp3")
 };
 
 // Enable looping for each ambient track
@@ -205,6 +205,8 @@ document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
         currentChime = input.value;
         //console.log("Current chime is: " + currentChime);
+        // temp = chimeSounds[currentChime];
+        // temp.play();
     });
 });
 
@@ -220,7 +222,7 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
         if (selected !== "none") {
             currentAmbient = ambientSounds[selected];
             if (currentAmbient) {
-                //currentAmbient.play();
+                currentAmbient.play();
             }
         }
         //console.log("Current ambient track: " + selected);
@@ -239,7 +241,7 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
         if (selected !== "none") {
             currentBgm = bgmSounds[selected];
             if (currentBgm) {
-                //currentBgm.play();
+                currentBgm.play();
             }
         }
         //console.log("Current bgm track: " + selected);

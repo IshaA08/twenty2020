@@ -1,4 +1,6 @@
 :root {
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Rubik', sans-serif;
     --bg: #ededed;
     --text: #1d1d1e;
     --accent: #40404c;
@@ -19,6 +21,12 @@
 body {
     background-color: var(--bg);
     color: var(--text);
+    font-family: var(--font-body);
+}
+
+h1,
+h2 {
+    font-family: var(--font-heading);
 }
 
 #info-section {
@@ -26,7 +34,7 @@ body {
     margin: 1rem auto;
     text-align: center;
     color: var(--text);
-    line-height: 1.4;
+    line-height: 1.6;
     font-size: 1rem;
 }
 
@@ -60,6 +68,14 @@ sup a:focus {
     outline: 1px dotted var(--accent);
 }
 
+#timer-display {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    transition: font-size 0.3s ease;
+}
 
 input[type="radio"],
 input[type="checkbox"] {
