@@ -1,7 +1,7 @@
 :root {
     --font-body: 'Inter', sans-serif;
     --font-heading: 'Rubik', sans-serif;
-    --bg: #ededed;
+    /*  --bg: #ededed;
     --text: #1d1d1e;
     --accent: #40404c;
     --accent-light: #5f5e63;
@@ -11,7 +11,18 @@
     --card-bg: #f9f9f9;
     --card-text: var(--text);
     --progress-bg: #eee;
+    --progress-fill: var(--accent); */
+    --bg: #1e1d1e;
+    --text: #dbdbe5;
+    --accent: #fefefe;
+    --accent-light: #bbbbbb;
+    --progress-bg: #6a6a6a;
     --progress-fill: var(--accent);
+    --border: #9f9ea3;
+    --card-bg: #1a1a1a;
+    --card-text: var(--text);
+    --btn-bg: var(--progress-bg);
+    --btn-text: var(--text);
 }
 
 * {
