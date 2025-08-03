@@ -79,6 +79,15 @@ Object.values(bgmSounds).forEach(audio => audio.volume = parseFloat(bgmVolumeSli
 // REMOVE THIS LATER beep - Use Web Audio API to create Audio object that can be played
 // const beep = new Audio("assets/beep.mp3");
 
+// Persistence helper functions - using local storage
+function saveSetting(key, value) {
+    localStorage.setItem(key, value);
+}
+
+function getSetting(key, defaultValue = null) {
+    return localStorage.getItem(key) || defaultValue;
+}
+
 // Update the browser tab's title to show the timer countdown or break status
 function updateTabTitle() {
     if (isBreak) {
@@ -213,6 +222,8 @@ resetBtn.addEventListener("click", () => {
 document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
         currentChime = input.value;
+        // Persist current chime setting
+        //   saveSetting("chime", currentChime);
         //console.log("Current chime is: " + currentChime);
         // temp = chimeSounds[currentChime];
         // temp.play();
@@ -223,6 +234,8 @@ document.querySelectorAll('input[name="chime"]').forEach(input => {
 document.querySelectorAll('input[name="ambient"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
+        // Persist current ambient track setting
+        //  saveSetting("ambient", selected);
 
         // Stop the current sound
         stopAmbientSound();
@@ -242,6 +255,8 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
 document.querySelectorAll('input[name="bgm"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
+        // Persist current bgm track setting
+        //  saveSetting("bgm", selected);
 
         // Stop the current sound
         stopBgmSound();
@@ -261,6 +276,8 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
 chimeVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(chimeVolumeSlider.value);
     Object.values(chimeSounds).forEach(audio => audio.volume = newVolume);
+    // Persist chime volume
+    // saveSetting("chimeVolume", newVolume);
     //console.log("Chime volume: " + newVolume);
 });
 
@@ -268,6 +285,8 @@ chimeVolumeSlider.addEventListener("input", () => {
 ambientVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(ambientVolumeSlider.value);
     Object.values(ambientSounds).forEach(audio => audio.volume = newVolume);
+    // Persist ambient volume
+    // saveSetting("ambientVolume", newVolume);
     // console.log("Ambient volume: " + newVolume);
 });
 
@@ -275,6 +294,8 @@ ambientVolumeSlider.addEventListener("input", () => {
 bgmVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(bgmVolumeSlider.value);
     Object.values(bgmSounds).forEach(audio => audio.volume = newVolume);
+    // Persist bgm volume
+    //saveSetting("bgmVolume", newVolume);
     // console.log("bgm volume: " + newVolume);
 });
 
@@ -286,6 +307,8 @@ document.querySelectorAll('input[name="theme"]').forEach(input => {
 
         // Add the new theme class
         const selectedTheme = input.value;
+        // Persist theme setting
+        saveSetting("theme", selectedTheme);
 
         if (selectedTheme === "light" || selectedTheme === "dark") {
             document.body.classList.add(`${selectedTheme}-mode`);
@@ -314,3 +337,61 @@ fetch("data/tips.json")
 
 updateTimerDisplay();
 updateProgressBar();
+
+// Load in user settings
+function applySavedSettings() {
+    // Theme
+    const savedTheme = getSetting("theme");
+    document.body.className = ''; // clear existing theme classes
+    if (savedTheme) {
+        document.querySelector(`input[name="theme"][value="${savedTheme}"]`).checked = true;
+    }
+    if (savedTheme === "light" || savedTheme === "dark") {
+        document.body.classList.add(`${savedTheme}-mode`);
+    } else {
+        document.body.classList.add(`${savedTheme}-theme`);
+    }
+    //  console.log("saved theme" + savedTheme);
+
+    // Chime
+    /* const savedChime = getSetting("chime");
+     if (savedChime) {
+         document.querySelector(`input[name="chime"][value="${savedChime}"]`).checked = true;
+         currentChime = savedChime;
+     }
+ 
+     // Ambient
+     const savedAmbient = getSetting("ambient");
+     if (savedAmbient) {
+         document.querySelector(`input[name="ambient"][value="${savedAmbient}"]`).checked = true;
+         if (savedAmbient !== "none") {
+             currentAmbient = ambientSounds[savedAmbient];
+             if (currentAmbient) currentAmbient.play();
+         }
+     }
+ 
+     // BGM
+     const savedBgm = getSetting("bgm");
+     if (savedBgm) {
+         document.querySelector(`input[name="bgm"][value="${savedBgm}"]`).checked = true;
+         if (savedBgm !== "none") {
+             currentBgm = bgmSounds[savedBgm];
+             if (currentBgm) currentBgm.play();
+         }
+     }
+ 
+     // Volumes
+     const savedChimeVol = parseFloat(getSetting("chimeVolume", "1"));
+     const savedAmbientVol = parseFloat(getSetting("ambientVolume", "1"));
+     const savedBgmVol = parseFloat(getSetting("bgmVolume", "1"));
+ 
+     chimeVolumeSlider.value = savedChimeVol;
+     ambientVolumeSlider.value = savedAmbientVol;
+     bgmVolumeSlider.value = savedBgmVol;
+ 
+     Object.values(chimeSounds).forEach(audio => audio.volume = savedChimeVol);
+     Object.values(ambientSounds).forEach(audio => audio.volume = savedAmbientVol);
+     Object.values(bgmSounds).forEach(audio => audio.volume = savedBgmVol); */
+}
+
+applySavedSettings();
