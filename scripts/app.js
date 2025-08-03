@@ -90,6 +90,13 @@ function updateTabTitle() {
     }
 }
 
+// Since js doesnt have a way to overload functions, add in a new method that updates
+// tab based on str passed to it
+function updateTabTitleWithText(txt_str) {
+    // Add type and error checking here
+    document.title = document.title + txt_str;
+}
+
 // Update the visible timer on the webpage
 function updateTimerDisplay() {
     const mins = Math.floor(timeLeft / 60).toString().padStart(2, "0");
@@ -172,12 +179,14 @@ startBtn.addEventListener("click", () => {
         clearInterval(timer);
         isRunning = false;
         startBtn.textContent = "Resume";
+        updateTabTitleWithText(" - Paused");
     } else {
         // Start the timer
         updateTimerDisplay();
         startTimer();
         isRunning = true;
         startBtn.textContent = "Pause";
+        updateTabTitle();
     }
 
     //updateTimerDisplay();
