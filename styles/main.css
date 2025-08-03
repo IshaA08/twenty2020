@@ -334,4 +334,17 @@ legend {
     #widgets {
         width: 100%;
     }
+
+    /* Change order for mobile */
+    #timer-section {
+        order: 1;
+    }
+
+    #settings-section {
+        order: 2;
+    }
+
+    #widgets {
+        order: 3;
+    }
 }
