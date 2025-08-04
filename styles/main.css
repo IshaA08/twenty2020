@@ -322,6 +322,27 @@ legend {
     color: var(--text);
 }
 
+/* Widget card styling */
+.widget-card {
+    position: relative;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--card-bg);
+}
+
+.widget-title {
+    position: absolute;
+    top: -0.4rem;
+    left: 1rem;
+    padding: 0 0.5rem;
+    background-color: var(--card-bg);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
 /* Responsiveness for columns to make it mobile-friendly */
 @media (max-width: 768px) {
     #main-columns {
