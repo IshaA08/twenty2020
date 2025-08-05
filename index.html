@@ -195,13 +195,33 @@
     <footer>
         <p>&copy; 2025 Twenty-20-20 App. Built with 🧠 and ☕ by Isha</p>
         <p>
-            <a href="mailto:you@example.com">Contact</a> |
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a> |
-            <a href="#">Sound Credits</a> |
-            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="mailto:isha_afzaal8@outlook.com" target="_blank">Contact</a> |
+            <a href="https://github.com/IshaA08/twenty2020" target="_blank" rel="noopener noreferrer">GitHub</a> |
+            <a href="#" id="sound-credits-btn">Sound Credits</a> |
+            <a href="#" id="privacy-policy-btn">Privacy Policy</a>
         </p>
     </footer>
 
+    <!-- Privacy policy modal -->
+    <div id="privacy-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" data-close="privacy-modal">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>This site does not collect, store, or transmit any personal data.</p>
+            <p>Your settings are stored only in your browser using localStorage.</p>
+        </div>
+    </div>
+
+    <!-- Sound credits modal -->
+    <div id="sound-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" data-close="sound-modal">&times;</span>
+            <h2>Sound Credits</h2>
+            <ul>
+                <li>"Gentle Bell" by AuthorName – <a href="#" target="_blank">Source</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Invoke JS script once DOM elements are loaded -->
     <script src="scripts/app.js"></script>

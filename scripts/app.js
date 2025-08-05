@@ -395,3 +395,41 @@ function applySavedSettings() {
 }
 
 applySavedSettings();
+
+/* Modal-related actions */
+document.addEventListener("DOMContentLoaded", () => {
+    // Open modal buttons
+    const privacyBtn = document.getElementById("privacy-policy-btn");
+    const soundBtn = document.getElementById("sound-credits-btn");
+
+    const privacyModal = document.getElementById("privacy-modal");
+    const soundModal = document.getElementById("sound-modal");
+
+    // Attach click listeners
+    privacyBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        privacyModal.classList.remove("hidden");
+    });
+
+    soundBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        soundModal.classList.remove("hidden");
+    });
+
+    // Close modal buttons
+    document.querySelectorAll(".close-button").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modalId = btn.dataset.close;
+            document.getElementById(modalId).classList.add("hidden");
+        });
+    });
+
+    // Close modals by clicking outside content
+    document.querySelectorAll(".modal").forEach(modal => {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.classList.add("hidden");
+            }
+        });
+    });
+});
