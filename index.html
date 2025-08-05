@@ -12,6 +12,9 @@
 <body>
     <header id="info-section">
         <h1>Twenty-20-20</h1>
+        <!-- Screen reader skip link -->
+        <a class="sr-only" href="#main-columns">Skip to main content</a>
+        <!-- Main content -->
         <h2>In-browser productivity tool that helps you use the 20-20-20 rule...</h2>
         <p>People who use computers for prolonged periods of time (whether it's for work, leisure, hobbies or all of the
             above) are more at risk of developing eye strain.<sup><a
@@ -41,27 +44,28 @@
 
             <!-- Settings Section -->
             <section id="settings-section">
-                <div id="sound-settings">
+                <div id="sound-settings" role="sound-settings">
                     <!-- Chime Sound Options -->
                     <fieldset id="chime-sound-options">
                         <legend>Chime Sound</legend>
-                        <label>
-                            <input type="radio" name="chime" value="soft-bell" />
+                        <!-- Radio dials for each option -->
+                        <label for="soft-bell">
+                            <input type="radio" name="chime" id="soft-bell" value="soft-bell" />
                             Soft Bell
                         </label><br />
-                        <label>
-                            <input type="radio" name="chime" value="gentle-ping" />
+                        <label for="gentle-ping">
+                            <input type="radio" name="chime" id="gentle-ping" value="gentle-ping" />
                             Gentle Chime
                         </label><br />
-                        <label>
-                            <input type="radio" name="chime" value="classic-beep" />
+                        <label for="classic-beep">
+                            <input type="radio" name="chime" id="classic-beep" value="classic-beep" />
                             Classic
                         </label><br />
-                        <label>
-                            <input type="radio" name="chime" value="none" checked />
+                        <label for="none">
+                            <input type="radio" name="chime" id="none" value="none" checked />
                             None
                         </label><br />
-                        <label>
+                        <label for="chime-volume">
                             Volume:
                             <input type="range" id="chime-volume" min="0" max="1" step="0.01" value="1" />
                         </label>
@@ -69,23 +73,24 @@
                     <!-- Ambient Sound Options-->
                     <fieldset id="ambient-sound-options">
                         <legend>Ambient Sound</legend>
-                        <label>
-                            <input type="radio" name="ambient" value="rain" />
+                        <!-- Radio dials for each option -->
+                        <label for="rain">
+                            <input type="radio" name="ambient" id="rain" value="rain" />
                             Gentle Rain
                         </label><br />
-                        <label>
-                            <input type="radio" name="ambient" value="rain-thunder" />
+                        <label for="rain-thunder">
+                            <input type="radio" name="ambient" id="rain-thunder" value="rain-thunder" />
                             Rain and Thunder
                         </label><br />
-                        <label>
-                            <input type="radio" name="ambient" value="fireplace" />
+                        <label for="fireplace">
+                            <input type="radio" name="ambient" id="fireplace" value="fireplace" />
                             Fireplace
                         </label><br />
-                        <label>
-                            <input type="radio" name="ambient" value="none" checked />
+                        <label for="none">
+                            <input type="radio" name="ambient" id="none" value="none" checked />
                             None
                         </label><br />
-                        <label>
+                        <label for="ambient-volume">
                             Volume:
                             <input type="range" id="ambient-volume" min="0" max="1" step="0.01" value="1" />
                         </label>
@@ -93,58 +98,59 @@
                     <!-- Background Tunes Options -->
                     <fieldset id="background-tunes-options">
                         <legend>BGM</legend>
-                        <label>
-                            <input type="radio" name="bgm" value="beat-1" />
+                        <!-- Radio dial options -->
+                        <label for="beat-1">
+                            <input type="radio" name="bgm" id="beat-1" value="beat-1" />
                             Night Detective
                         </label><br />
-                        <label>
-                            <input type="radio" name="bgm" value="beat-2" />
+                        <label for="beat-2">
+                            <input type="radio" name="bgm" id="beat-2" value="beat-2" />
                             Lofi
                         </label><br />
-                        <label>
-                            <input type="radio" name="bgm" value="beat-3" />
+                        <label for="beat-3">
+                            <input type="radio" name="bgm" id="beat-3" value="beat-3" />
                             Smoke
                         </label><br />
-                        <label>
-                            <input type="radio" name="bgm" value="none" checked />
+                        <label for="none">
+                            <input type="radio" name="bgm" id="none" value="none" checked />
                             None
                         </label><br />
-                        <label>
+                        <label for="bgm-volume">
                             Volume:
                             <input type="range" id="bgm-volume" min="0" max="1" step="0.01" value="1" />
                         </label>
                     </fieldset>
                 </div>
-                <div id="visual-settings">
+                <div id="visual-settings" role="visual-settings">
                     <!-- Light/Dark Mode -->
                     <fieldset id="light-dark-mode">
                         <legend>Appearance</legend>
-                        <label>
-                            <input type="radio" name="theme" value="light" />
+                        <label for="light">
+                            <input type="radio" name="theme" id="light" value="light" />
                             Light
                         </label><br />
-                        <label>
-                            <input type="radio" name="theme" value="dark" checked />
+                        <label for="dark">
+                            <input type="radio" name="theme" id="dark" value="dark" checked />
                             Dark
                         </label>
                     </fieldset>
                     <!-- Preset Themes -->
                     <fieldset id="preset-themes">
                         <legend>Themes</legend>
-                        <label>
-                            <input type="radio" name="theme" value="bubblegum" />
+                        <label for="bubblegum">
+                            <input type="radio" name="theme" id="bubblegum" value="bubblegum" />
                             Bubblegum Pink
                         </label><br />
-                        <label>
-                            <input type="radio" name="theme" value="forest" />
+                        <label for="forest">
+                            <input type="radio" name="theme" id="forest" value="forest" />
                             Forest Green
                         </label><br />
-                        <label>
-                            <input type="radio" name="theme" value="ocean" />
+                        <label for="ocean">
+                            <input type="radio" name="theme" id="ocean" value="ocean" />
                             Ocean Blue
                         </label><br />
-                        <label>
-                            <input type="radio" name="theme" value="sunny" />
+                        <label for="sunny">
+                            <input type="radio" name="theme" id="sunny" value="sunny" />
                             Sunshine Yellow
                         </label>
                     </fieldset>
@@ -160,11 +166,11 @@
                 <button id="start-btn">Start</button>
                 <button id="reset-btn">Reset</button>
                 <div>
-                    <label>
+                    <label for="auto-toggle">
                         <input type="checkbox" id="auto-toggle" />
                         Automatically restart timer
                     </label><br />
-                    <label>
+                    <label for="break-time">
                         Break duration (seconds):
                         <input type="number" id="break-time" value="20" min="10" max="120" />
                     </label>
@@ -173,11 +179,11 @@
 
             <!-- Widget Elements -->
             <section id="widgets">
-                <div id="quote-box" class="widget-card">
+                <div id="quote-box" class="widget-card" role="quote-of-the-day-widget">
                     <h3 class="widget-title">Quote of the Day</h3>
                     <p id="quote"></p>
                 </div>
-                <div id="tip-box" class="widget-card">
+                <div id="tip-box" class="widget-card" role="eye-health-tip-widget">
                     <h3 class="widget-title">Eye Health Tip</h3>
                     <p id="tip"></p>
                 </div>

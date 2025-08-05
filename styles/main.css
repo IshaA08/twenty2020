@@ -343,6 +343,27 @@ legend {
     font-size: 1rem;
 }
 
+/* Screen reader accessibility styling */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Make sure to respect system preferences to avoid triggering dizziness or motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 /* Responsiveness for columns to make it mobile-friendly */
 @media (max-width: 768px) {
     #main-columns {
