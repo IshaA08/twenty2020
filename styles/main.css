@@ -402,6 +402,12 @@ footer a:hover {
     color: var(--text);
 }
 
+/* Used for stopping scrolling when modals are open */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
 /* Screen reader accessibility styling */
 .sr-only {
     position: absolute;

@@ -398,7 +398,6 @@ applySavedSettings();
 
 /* Modal-related actions */
 document.addEventListener("DOMContentLoaded", () => {
-    // Open modal buttons
     const privacyBtn = document.getElementById("privacy-policy-btn");
     const soundBtn = document.getElementById("sound-credits-btn");
 
