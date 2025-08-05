@@ -343,6 +343,27 @@ legend {
     font-size: 1rem;
 }
 
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text);
+    background-color: var(--bg);
+    border-top: 1px solid var(--text);
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 /* Screen reader accessibility styling */
 .sr-only {
     position: absolute;
