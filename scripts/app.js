@@ -404,15 +404,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const privacyModal = document.getElementById("privacy-modal");
     const soundModal = document.getElementById("sound-modal");
 
-    // Attach click listeners
+    // Open modals
     privacyBtn.addEventListener("click", (e) => {
         e.preventDefault();
         privacyModal.classList.remove("hidden");
+        document.body.classList.add("no-scroll");
     });
 
     soundBtn.addEventListener("click", (e) => {
         e.preventDefault();
         soundModal.classList.remove("hidden");
+        document.body.classList.add("no-scroll");
     });
 
     // Close modal buttons
@@ -420,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             const modalId = btn.dataset.close;
             document.getElementById(modalId).classList.add("hidden");
+            document.body.classList.remove("no-scroll");
         });
     });
 
@@ -428,6 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 modal.classList.add("hidden");
+                document.body.classList.remove("no-scroll");
             }
         });
     });
