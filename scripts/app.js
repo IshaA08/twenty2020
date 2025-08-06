@@ -8,6 +8,7 @@ const timerDisplay = document.getElementById("timer-display");
 const startBtn = document.getElementById("start-btn");
 const resetBtn = document.getElementById("reset-btn");
 const saveBtn = document.getElementById("save-btn");
+const loadBtn = document.getElementById("load-btn");
 const soundToggle = document.getElementById("sound-toggle");
 const autoToggle = document.getElementById("auto-toggle");
 const breakInput = document.getElementById("break-time");
@@ -233,8 +234,61 @@ saveBtn.addEventListener("click", () => {
     saveSetting("chimeVolume", currentChimeVolume);
     saveSetting("ambientVolume", currentAmbientVolume);
     saveSetting("bgmVolume", currentBgmVolume);
-    // console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
-    //console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+    console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
+    console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+});
+
+// Load button functionality
+loadBtn.addEventListener("click", () => {
+    // Load all saved settings
+    // Chime
+    const savedChime = getSetting("chime");
+    if (savedChime) {
+        document.querySelector(`input[name="chime"][value="${savedChime}"]`).checked = true;
+        currentChime = savedChime;
+    }
+
+    // Ambient
+    const savedAmbient = getSetting("ambient");
+    if (savedAmbient) {
+        document.querySelector(`input[name="ambient"][value="${savedAmbient}"]`).checked = true;
+        if (savedAmbient !== "none") {
+            currentAmbient = ambientSounds[savedAmbient];
+            currentSelectedAmbient = savedAmbient;
+            if (currentAmbient) currentAmbient.play();
+        }
+    }
+
+    // BGM
+    const savedBgm = getSetting("bgm");
+    if (savedBgm) {
+        document.querySelector(`input[name="bgm"][value="${savedBgm}"]`).checked = true;
+        if (savedBgm !== "none") {
+            currentBgm = bgmSounds[savedBgm];
+            currentSelectedBgm = savedBgm;
+            if (currentBgm) currentBgm.play();
+        }
+    }
+
+    // Volumes
+    const savedChimeVol = parseFloat(getSetting("chimeVolume", "1"));
+    const savedAmbientVol = parseFloat(getSetting("ambientVolume", "1"));
+    const savedBgmVol = parseFloat(getSetting("bgmVolume", "1"));
+
+    chimeVolumeSlider.value = savedChimeVol;
+    ambientVolumeSlider.value = savedAmbientVol;
+    bgmVolumeSlider.value = savedBgmVol;
+
+    currentChimeVolume = savedChimeVol;
+    currentAmbientVolume = savedAmbientVol;
+    currentBgmVolume = savedBgmVol;
+
+    Object.values(chimeSounds).forEach(audio => audio.volume = savedChimeVol);
+    Object.values(ambientSounds).forEach(audio => audio.volume = savedAmbientVol);
+    Object.values(bgmSounds).forEach(audio => audio.volume = savedBgmVol);
+
+    console.log("loaded values for chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
+    console.log("loaded vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
 });
 
 // Change the chime setting depending on what the user selects
