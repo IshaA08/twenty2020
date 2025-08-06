@@ -1,9 +1,3 @@
-/**
- * app.js
- */
-
-// Get references to Document Object Model (DOM) elements via their IDs, which can then
-// be used later to update UI or react to user actions
 const timerDisplay = document.getElementById("timer-display");
 const startBtn = document.getElementById("start-btn");
 const resetBtn = document.getElementById("reset-btn");
@@ -78,14 +72,10 @@ function updateProgressBar() {
     progressBar.style.width = `${percent}%`;
 }
 
-
 // Set initial volume on all sounds
 Object.values(chimeSounds).forEach(audio => audio.volume = parseFloat(chimeVolumeSlider.value));
 Object.values(ambientSounds).forEach(audio => audio.volume = parseFloat(ambientVolumeSlider.value));
 Object.values(bgmSounds).forEach(audio => audio.volume = parseFloat(bgmVolumeSlider.value));
-
-// REMOVE THIS LATER beep - Use Web Audio API to create Audio object that can be played
-// const beep = new Audio("assets/beep.mp3");
 
 // Persistence helper functions - using local storage
 function saveSetting(key, value) {
@@ -185,7 +175,6 @@ function stopBgmSound() {
     }
 }
 
-// Event listener for Start button that requests notification permission, updates timer display and starts timer
 startBtn.addEventListener("click", () => {
     if (Notification.permission !== "granted") {
         Notification.requestPermission();
@@ -205,9 +194,6 @@ startBtn.addEventListener("click", () => {
         startBtn.textContent = "Pause";
         updateTabTitle();
     }
-
-    //updateTimerDisplay();
-    //startTimer();
 });
 
 resetBtn.addEventListener("click", () => {
@@ -237,9 +223,9 @@ saveBtn.addEventListener("click", () => {
     saveSetting("bgmVolume", currentBgmVolume);
     saveSetting("autoToggle", autoToggle.checked);
     saveSetting("breakInput", breakInput.value);
-    console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
-    console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
-    console.log("saved these for autotoggle: " + autoToggle.checked + " breakinput " + breakInput.value);
+    //  console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
+    //  console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+    //  console.log("saved these for autotoggle: " + autoToggle.checked + " breakinput " + breakInput.value);
 });
 
 // Load button functionality
@@ -300,9 +286,9 @@ loadBtn.addEventListener("click", () => {
     const savedBreakInput = parseInt(getSetting("breakInput", 20));
     breakInput.value = savedBreakInput;
 
-    console.log("loaded values for chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
-    console.log("loaded vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
-    console.log("loaded these vals for autotoggle " + savedToggle + " breakinput " + savedBreakInput);
+    // console.log("loaded values for chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
+    // console.log("loaded vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+    // console.log("loaded these vals for autotoggle " + savedToggle + " breakinput " + savedBreakInput);
 });
 
 // Reset button functionality
@@ -314,11 +300,6 @@ clearBtn.addEventListener("click", () => {
 document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
         currentChime = input.value;
-        // Persist current chime setting
-        //   saveSetting("chime", currentChime);
-        //console.log("Current chime is: " + currentChime);
-        // temp = chimeSounds[currentChime];
-        // temp.play();
     });
 });
 
@@ -327,8 +308,6 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
         currentSelectedAmbient = input.value;
-        // Persist current ambient track setting
-        //  saveSetting("ambient", selected);
 
         // Stop the current sound
         stopAmbientSound();
@@ -340,7 +319,6 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
                 currentAmbient.play();
             }
         }
-        //console.log("Current ambient track: " + selected);
     });
 });
 
@@ -349,8 +327,6 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
         currentSelectedBgm = input.value;
-        // Persist current bgm track setting
-        //  saveSetting("bgm", selected);
 
         // Stop the current sound
         stopBgmSound();
@@ -362,7 +338,6 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
                 currentBgm.play();
             }
         }
-        //console.log("Current bgm track: " + selected);
     });
 });
 
@@ -371,9 +346,6 @@ chimeVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(chimeVolumeSlider.value);
     currentChimeVolume = newVolume;
     Object.values(chimeSounds).forEach(audio => audio.volume = newVolume);
-    // Persist chime volume
-    // saveSetting("chimeVolume", newVolume);
-    //console.log("Chime volume: " + newVolume);
 });
 
 // Update ambient sound volume on slider input
@@ -381,9 +353,6 @@ ambientVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(ambientVolumeSlider.value);
     currentAmbientVolume = newVolume;
     Object.values(ambientSounds).forEach(audio => audio.volume = newVolume);
-    // Persist ambient volume
-    // saveSetting("ambientVolume", newVolume);
-    // console.log("Ambient volume: " + newVolume);
 });
 
 // Update BGM volume on slider input
@@ -391,9 +360,6 @@ bgmVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(bgmVolumeSlider.value);
     currentBgmVolume = newVolume;
     Object.values(bgmSounds).forEach(audio => audio.volume = newVolume);
-    // Persist bgm volume
-    //saveSetting("bgmVolume", newVolume);
-    // console.log("bgm volume: " + newVolume);
 });
 
 // Change appearance based on user input
@@ -448,47 +414,6 @@ function applySavedSettings() {
     } else {
         document.body.classList.add(`${savedTheme}-theme`);
     }
-    //  console.log("saved theme" + savedTheme);
-
-    // Chime
-    /* const savedChime = getSetting("chime");
-     if (savedChime) {
-         document.querySelector(`input[name="chime"][value="${savedChime}"]`).checked = true;
-         currentChime = savedChime;
-     }
- 
-     // Ambient
-     const savedAmbient = getSetting("ambient");
-     if (savedAmbient) {
-         document.querySelector(`input[name="ambient"][value="${savedAmbient}"]`).checked = true;
-         if (savedAmbient !== "none") {
-             currentAmbient = ambientSounds[savedAmbient];
-             if (currentAmbient) currentAmbient.play();
-         }
-     }
- 
-     // BGM
-     const savedBgm = getSetting("bgm");
-     if (savedBgm) {
-         document.querySelector(`input[name="bgm"][value="${savedBgm}"]`).checked = true;
-         if (savedBgm !== "none") {
-             currentBgm = bgmSounds[savedBgm];
-             if (currentBgm) currentBgm.play();
-         }
-     }
- 
-     // Volumes
-     const savedChimeVol = parseFloat(getSetting("chimeVolume", "1"));
-     const savedAmbientVol = parseFloat(getSetting("ambientVolume", "1"));
-     const savedBgmVol = parseFloat(getSetting("bgmVolume", "1"));
- 
-     chimeVolumeSlider.value = savedChimeVol;
-     ambientVolumeSlider.value = savedAmbientVol;
-     bgmVolumeSlider.value = savedBgmVol;
- 
-     Object.values(chimeSounds).forEach(audio => audio.volume = savedChimeVol);
-     Object.values(ambientSounds).forEach(audio => audio.volume = savedAmbientVol);
-     Object.values(bgmSounds).forEach(audio => audio.volume = savedBgmVol); */
 }
 
 applySavedSettings();
