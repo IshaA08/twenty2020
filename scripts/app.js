@@ -7,6 +7,7 @@
 const timerDisplay = document.getElementById("timer-display");
 const startBtn = document.getElementById("start-btn");
 const resetBtn = document.getElementById("reset-btn");
+const saveBtn = document.getElementById("save-btn");
 const soundToggle = document.getElementById("sound-toggle");
 const autoToggle = document.getElementById("auto-toggle");
 const breakInput = document.getElementById("break-time");
@@ -53,12 +54,17 @@ let timeLeft = 20 * 60; // the remaining time in each interval
 // Sound defaults
 let currentChime = document.querySelector('input[name="chime"]:checked').value;
 let currentAmbient = null;
+let currentSelectedAmbient = null;
 let currentBgm = null;
+let currentSelectedBgm = null;
 
 // Sound/Volume controls
 const chimeVolumeSlider = document.getElementById("chime-volume");
+let currentChimeVolume = 1;
 const ambientVolumeSlider = document.getElementById("ambient-volume");
+let currentAmbientVolume = 1;
 const bgmVolumeSlider = document.getElementById("bgm-volume");
+let currentBgmVolume = 1;
 
 // Progress bar controls
 const progressBar = document.getElementById('current-progress');
@@ -218,6 +224,19 @@ resetBtn.addEventListener("click", () => {
     startBtn.textContent = "Start";
 });
 
+// Save button functionality
+saveBtn.addEventListener("click", () => {
+    // Save all sound settings using local storage
+    saveSetting("chime", currentChime);
+    saveSetting("ambient", currentSelectedAmbient);
+    saveSetting("bgm", currentSelectedBgm);
+    saveSetting("chimeVolume", currentChimeVolume);
+    saveSetting("ambientVolume", currentAmbientVolume);
+    saveSetting("bgmVolume", currentBgmVolume);
+    // console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
+    //console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+});
+
 // Change the chime setting depending on what the user selects
 document.querySelectorAll('input[name="chime"]').forEach(input => {
     input.addEventListener("change", () => {
@@ -234,6 +253,7 @@ document.querySelectorAll('input[name="chime"]').forEach(input => {
 document.querySelectorAll('input[name="ambient"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
+        currentSelectedAmbient = input.value;
         // Persist current ambient track setting
         //  saveSetting("ambient", selected);
 
@@ -255,6 +275,7 @@ document.querySelectorAll('input[name="ambient"]').forEach(input => {
 document.querySelectorAll('input[name="bgm"]').forEach(input => {
     input.addEventListener("change", () => {
         const selected = input.value;
+        currentSelectedBgm = input.value;
         // Persist current bgm track setting
         //  saveSetting("bgm", selected);
 
@@ -275,6 +296,7 @@ document.querySelectorAll('input[name="bgm"]').forEach(input => {
 // Update chime volume on slider input
 chimeVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(chimeVolumeSlider.value);
+    currentChimeVolume = newVolume;
     Object.values(chimeSounds).forEach(audio => audio.volume = newVolume);
     // Persist chime volume
     // saveSetting("chimeVolume", newVolume);
@@ -284,6 +306,7 @@ chimeVolumeSlider.addEventListener("input", () => {
 // Update ambient sound volume on slider input
 ambientVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(ambientVolumeSlider.value);
+    currentAmbientVolume = newVolume;
     Object.values(ambientSounds).forEach(audio => audio.volume = newVolume);
     // Persist ambient volume
     // saveSetting("ambientVolume", newVolume);
@@ -293,6 +316,7 @@ ambientVolumeSlider.addEventListener("input", () => {
 // Update BGM volume on slider input
 bgmVolumeSlider.addEventListener("input", () => {
     const newVolume = parseFloat(bgmVolumeSlider.value);
+    currentBgmVolume = newVolume;
     Object.values(bgmSounds).forEach(audio => audio.volume = newVolume);
     // Persist bgm volume
     //saveSetting("bgmVolume", newVolume);
