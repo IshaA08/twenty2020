@@ -393,6 +393,21 @@ footer a:hover {
     position: relative;
 }
 
+.modal-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.modal-content a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.modal-content a:visited {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
 .close-button {
     position: absolute;
     top: 1rem;
