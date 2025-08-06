@@ -235,8 +235,11 @@ saveBtn.addEventListener("click", () => {
     saveSetting("chimeVolume", currentChimeVolume);
     saveSetting("ambientVolume", currentAmbientVolume);
     saveSetting("bgmVolume", currentBgmVolume);
+    saveSetting("autoToggle", autoToggle.checked);
+    saveSetting("breakInput", breakInput.value);
     console.log("saved the following: chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
     console.log("saved these vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+    console.log("saved these for autotoggle: " + autoToggle.checked + " breakinput " + breakInput.value);
 });
 
 // Load button functionality
@@ -288,8 +291,18 @@ loadBtn.addEventListener("click", () => {
     Object.values(ambientSounds).forEach(audio => audio.volume = savedAmbientVol);
     Object.values(bgmSounds).forEach(audio => audio.volume = savedBgmVol);
 
+    // Auto toggle
+    const savedToggle = getSetting("autoToggle", false);
+    // autoToggle.checked = savedToggle;
+    autoToggle.checked = savedToggle === "true";
+
+    // Break input
+    const savedBreakInput = parseInt(getSetting("breakInput", 20));
+    breakInput.value = savedBreakInput;
+
     console.log("loaded values for chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
     console.log("loaded vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+    console.log("loaded these vals for autotoggle " + savedToggle + " breakinput " + savedBreakInput);
 });
 
 // Reset button functionality
