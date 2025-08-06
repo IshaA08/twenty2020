@@ -9,6 +9,7 @@ const startBtn = document.getElementById("start-btn");
 const resetBtn = document.getElementById("reset-btn");
 const saveBtn = document.getElementById("save-btn");
 const loadBtn = document.getElementById("load-btn");
+const clearBtn = document.getElementById("clear-btn");
 const soundToggle = document.getElementById("sound-toggle");
 const autoToggle = document.getElementById("auto-toggle");
 const breakInput = document.getElementById("break-time");
@@ -289,6 +290,11 @@ loadBtn.addEventListener("click", () => {
 
     console.log("loaded values for chime " + currentChime + " amb " + currentSelectedAmbient + " bgm " + currentSelectedBgm);
     console.log("loaded vols for chime " + currentChimeVolume + " amb " + currentAmbientVolume + " bgm " + currentBgmVolume);
+});
+
+// Reset button functionality
+clearBtn.addEventListener("click", () => {
+    localStorage.clear();
 });
 
 // Change the chime setting depending on what the user selects
