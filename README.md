@@ -32,13 +32,11 @@ For every **20 minutes** of screen time, look at something that is about **20 fe
 
 ## 📂 Project Structure
 
-/
-├── index.html # Main HTML
-├── scripts/app.js # All logic
-├── styles/style.css # Styling and themes
-├── assets/ # Sounds/images/etc.
-└── README.md
-
+- index.html # Main HTML
+- scripts/app.js # All logic
+- styles/style.css # Styling and themes
+- assets/ # Sounds/images/etc.
+- README.md
 
 ---
 
@@ -76,6 +74,7 @@ No data is collected, tracked, or sent anywhere and does not leave your device.
 - [ ] Better accessibility and contrast mode
 - [ ] Sound previews before setting
 - [ ] Sound equalizer when tracks are playing
+- [ ] Browser extension
 
 ---
 
