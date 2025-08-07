@@ -55,7 +55,7 @@ For every **20 minutes** of screen time, look at something that is about **20 fe
 - Gentle rain and thunder ambient sounds by [OxidVideos](https://pixabay.com/users/oxidvideos-37598254/)
 - Fireplace ambient sounds by [King_of_The_Christmas](https://pixabay.com/users/king_of_the_christmas-6030238/)
 - "Night Detective" by [SoulProdMusic](https://pixabay.com/users/soulprodmusic-30064790/)
-- “Lo-fi loop” by [castmate](https://pixabay.com/users/danielwisdompublicdomain-31736081/)
+- “Lo-fi” by [castmate](https://pixabay.com/users/danielwisdompublicdomain-31736081/)
 - “Smoke” by [Idoberg](https://pixabay.com/users/idoberg-34953295/)
 
 > All sounds used are royalty-free and credited accordingly
@@ -86,5 +86,5 @@ No data is collected, tracked, or sent anywhere and does not leave your device.
 
 ## 🧑‍💻 Author
 
-Made with care by [Isha~](https://github.com/IshaA08).  
+Made with care by [Isha~](https://github.com/IshaA08)
 Open to feedback and collaboration!
