@@ -87,4 +87,5 @@ No data is collected, tracked, or sent anywhere and does not leave your device.
 ## 🧑‍💻 Author
 
 Made with care by [Isha~](https://github.com/IshaA08)
+
 Open to feedback and collaboration!
