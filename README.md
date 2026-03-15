@@ -49,19 +49,6 @@ For every **20 minutes** of screen time, look at something that is about **20 fe
 
 ---
 
-## 🔊 Sound Credits
-
-- Notification sounds by [Universfield](https://pixabay.com/users/universfield-28281460/)
-- Gentle rain and thunder ambient sounds by [OxidVideos](https://pixabay.com/users/oxidvideos-37598254/)
-- Fireplace ambient sounds by [King_of_The_Christmas](https://pixabay.com/users/king_of_the_christmas-6030238/)
-- "Night Detective" by [SoulProdMusic](https://pixabay.com/users/soulprodmusic-30064790/)
-- “Lo-fi” by [castmate](https://pixabay.com/users/danielwisdompublicdomain-31736081/)
-- “Smoke” by [Idoberg](https://pixabay.com/users/idoberg-34953295/)
-
-> All sounds used are royalty-free and credited accordingly
-
----
-
 ## 🛡️ Privacy Policy
 
 This app stores settings **locally on your browser** using localStorage.  
